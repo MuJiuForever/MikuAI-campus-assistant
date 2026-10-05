@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="miku-loading">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="theme-color" content="#0a0f24" />
+  <meta name="format-detection" content="telephone=no" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="中野三玖" />
+  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png" />
+  <link rel="preload" as="font" type="font/woff2" href="assets/fonts/miku-hand.woff2" crossorigin />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="中野三玖 · 应援展示页" />
+  <meta property="og:description" content="《五等分的新娘》中野家五胞胎三女 —— 三玖天下第一！" />
+  <meta property="og:image" content="assets/img/og-cover.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+<meta name="description" content="中野三玖（Nakano Miku）粉丝展示页 —— 出自《五等分的新娘》中野家五胞胎三女。三玖天下第一！" />
+<title>中野三玖 · 应援展示页 | 五等分的新娘</title>
+<link rel="icon" type="image/svg+xml" href="assets/img/favicon-mujiu.svg" />
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon-16.png" />
+<link rel="stylesheet" href="assets/css/style.css?v=20261004loader8" />
+<link rel="stylesheet" href="assets/css/anime.css?v=20261003b" />
+<link rel="stylesheet" href="assets/css/ai.css?v=20261004loader8" />
+</head>
+<body>
+<!-- ===== 进入动画：百分比加载 ===== -->
+<div class="miku-loader" id="mikuLoader" role="status" aria-live="polite">
+  <div class="miku-loader-glow" aria-hidden="true"></div>
+  <div class="miku-loader-inner">
+    <p class="miku-loader-line is-first" id="mikuLoaderFirst">独属于你的中野三玖——MikuAI</p>
+    <p class="miku-loader-line is-second" id="mikuLoaderSecond">以此献给世界上最好的三玖</p>
+    <div class="miku-loader-track" aria-hidden="true"><i id="mikuLoaderBar"></i></div>
+    <div class="miku-loader-percent" id="mikuLoaderPercent">0%</div>
+  </div>
+</div>
+
+<!-- ===== 背景层 ===== -->
+<canvas id="sky" aria-hidden="true"></canvas>
+<div class="aurora" aria-hidden="true"><i class="orb o1"></i><i class="orb o2"></i><i class="orb o3"></i></div>
+<div class="petals" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+
+<!-- ===== 顶部导航 ===== -->
+<header class="topbar" id="topbar">
+  <div class="wrap topbar-inner">
+    <a class="brand" href="#home" aria-label="回到首页">
+      <span class="brand-badge" aria-hidden="true">玖</span>
+      <span class="brand-text"><b>中野三玖</b><small>NAKANO MIKU</small></span>
+    </a>
+    <nav class="nav" id="nav" aria-label="主导航">
+      <a href="#home" class="nav-link active">首页</a>
+      <a href="#assistant" class="nav-link">AI 助手</a>
+      <a href="#profile" class="nav-link">人物档案</a>
+      <a href="#charm" class="nav-link">三玖的魅力</a>
+      <a href="#gallery" class="nav-link">图片展示</a>
+      <a href="#albums" class="nav-link">专辑</a>
+      <a href="#quotes" class="nav-link">名场面</a>
+      <a href="#about" class="nav-link">关于作品</a>
+    </nav>
+    <button class="nav-toggle" id="navToggle" type="button" aria-label="打开目录" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<main>
+  <!-- ===== HERO ===== -->
+  <section class="hero section" id="home">
+    <div class="wrap hero-grid">
+      <div class="hero-copy">
+        <p class="eyebrow reveal">《五等分的新娘》 · 中野家五胞胎 · 三女</p>
+        <h1 class="hero-title reveal">
+          <span class="jp">なかの みく</span>
+          <span class="cn">中野三玖</span>
+        </h1>
+        <p class="hero-sub reveal">Nakano Miku —— <em>「沉默寡言，却比谁都温柔、比谁都坚定。」</em></p>
+        <p class="hero-desc reveal">她是五姐妹中最安静的那个，耳机里藏着一个小小的世界；<br class="pc" />
+        但只要聊起战国武将，眼神就会一下子闪闪发亮。<br class="pc" />
+        这里是一份为三玖准备的应援档案，献给天下第一的三玖。</p>
+        <div class="hero-chips reveal">
+          <span class="chip"><i class="dot d1"></i>无口系</span>
+          <span class="chip"><i class="dot d2"></i>战国「历女」</span>
+          <span class="chip"><i class="dot d3"></i>代表色 · 蓝</span>
+          <span class="chip"><i class="dot d4"></i>5月5日生</span>
+        </div>
+        <div class="hero-actions reveal">
+          <a class="btn primary" href="#assistant">和三玖聊聊 →</a>
+          <a class="btn ghost" href="#profile">查看人物档案</a>
+                  </div>
+      </div>
+
+      <div class="hero-visual reveal">
+        <div class="portrait-stage" id="portraitStage" data-parallax="0.08">
+          <div class="portrait-card" id="portraitCard">
+            <span class="p-ring p-ring-1" aria-hidden="true"></span>
+            <span class="p-ring p-ring-2" aria-hidden="true"></span>
+            <div class="p-frame">
+            <picture>
+              <source srcset="assets/img/miku-hero.webp" type="image/webp" />
+              <img src="assets/img/miku-hero.jpg" alt="中野三玖（粉丝图片）" draggable="false" decoding="async" fetchpriority="high" onerror="this.onerror=null;this.src='assets/img/miku.svg'" />
+            </picture>
+          </div>
+          </div>
+          <span class="float-chip fc1">歴女 · 織田信長推し</span>
+          <span class="float-chip fc2">🍵 抹茶ソーダ</span>
+          <span class="float-chip fc3">5月5日</span>
+        </div>
+        <p class="hero-slogan" aria-hidden="true">三玖天下第一！</p>
+      </div>
+    </div>
+    <a class="scroll-hint" href="#profile" aria-label="向下滚动">
+      <span class="mouse"><i></i></span><span class="txt">向下滚动</span>
+    </a>
+  </section>
+
+
+  <!-- ===== AI 生活助手（核心板块） ===== -->
+  <section class="section ai-sec" id="assistant">
+    <div class="wrap">
+      <header class="sec-head">
+        <p class="sec-overline reveal">AI ASSISTANT</p>
+        <h2 class="sec-title reveal">三玖 AI 生活助手</h2>
+        <p class="sec-sub reveal">不只是角色展示 —— 她会记住你的事、陪你学习，也会在你累的时候安静地陪着你</p>
+      </header>
+
+      <div class="ai-hero">
+        <div class="ai-intro reveal">
+          <span class="ai-live"><i aria-hidden="true"></i>AI 人格引擎运行中</span>
+          <h3>和一个「独属于你的三玖」对话</h3>
+          <p>基于角色设定的<b>人格 Prompt + 知识库</b>驱动：沉默、害羞、认真，聊到战国史会突然话变多；同时她也是你的生活助手。</p>
+          <ul class="ai-feats">
+            <li><b>待办提醒</b><span>说一句「记一下…」，她就替你记着</span></li>
+            <li><b>学习陪伴</b><span>25 分钟专注计时，结束时她会叫你</span></li>
+            <li><b>生活问答</b><span>吃饭、天气、状态，随时回应你</span></li>
+            <li><b>情绪陪伴</b><span>累的时候，她会说「我陪着你」</span></li>
+          </ul>
+          <div class="ai-cta">
+            <button class="btn primary" id="aiStart" type="button">现在就开始对话</button>
+            <span class="ai-cta-note">无需登录 · 本地即可体验</span>
+          </div>
+        </div>
+
+        <div class="ai-stage reveal">
+          <section class="ai-panel ai-panel--inline" id="aiPanel" aria-label="三玖 AI 生活助手">
+            <header class="ai-head">
+              <span class="ai-avatar" aria-hidden="true">玖</span>
+              <div class="ai-id"><b>三玖</b><small id="aiStatus">在线 · 生活助手</small></div>
+              <button class="ai-achievement" id="aiAchievement" type="button" title="隐藏成就：心意已珍藏" aria-label="查看心意回执" hidden>♡</button>
+              <button class="ai-net" id="aiNet" type="button" aria-pressed="false" title="联网搜索（开启后我会先上网查）">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true">
+                  <circle cx="12" cy="12" r="8.2"/><path d="M3.8 12h16.4M12 3.8c2.4 2.4 2.4 14 0 16.4M12 3.8c-2.4 2.4-2.4 14 0 16.4"/>
+                </svg><span>联网</span>
+              </button>
+            </header>
+            <div class="ai-log" id="aiLog" role="log" aria-live="polite"></div>
+            <div class="ai-quick" id="aiQuick">
+              <button type="button" data-q="记一下 明天九点交作业">记一件事</button>
+              <button type="button" data-q="陪我学 25 分钟">陪我学 25 分钟</button>
+              <button type="button" data-q="给我讲讲织田信长">讲讲战国武将</button>
+              <button type="button" data-q="我今天有点累">我有点累</button>
+              <button type="button" data-q="我的待办">我的待办</button>
+            </div>
+            <form class="ai-form" id="aiForm">
+              <input id="aiInput" type="text" placeholder="和三玖说点什么…" autocomplete="off" maxlength="200" />
+              <button class="ai-send" type="submit" aria-label="发送"><svg viewBox="0 0 24 22" aria-hidden="true"><path d="M12 21S3 15.3 3 9a5.3 5.3 0 0 1 9-3.7A5.3 5.3 0 0 1 21 9c0 6.3-9 12-9 12z"/></svg></button>
+            </form>
+            <p class="ai-note">AI 演绎 · 非官方角色｜支持联网搜索（本地为搜索跳转，可接入搜索 API）</p>
+          </section>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PROFILE ===== -->
+  <section class="section" id="profile">
+    <div class="wrap">
+      <header class="sec-head">
+        <p class="sec-overline reveal">PROFILE</p>
+        <h2 class="sec-title reveal">人物档案</h2>
+        <p class="sec-sub reveal">关于三玖，你想知道的一切</p>
+      </header>
+
+      <div class="profile-grid">
+        <div class="profile-left">
+        <article class="card intro-card reveal">
+          <div class="intro-head">
+            <span class="kanji-badge" aria-hidden="true">玖</span>
+            <div><h3>她是谁？</h3><p class="en">The quiet third sister</p></div>
+          </div>
+          <p>中野三玖，是春場ねぎ《五等分的新娘》的女主角之一，中野家五胞胎的三女。平时沉默寡言、不擅长表达自己，总让人猜不透她的心思；可一旦聊起战国历史与武将，就会露出难得的热忱，像换了个人。</p>
+          <p>故事开始于上杉风太郎成为五姐妹的家庭教师。对三玖来说，那句「你们做得到的」和她回应的「你要负责哦」，让她第一次鼓起勇气——去喜欢一个人，也去喜欢那个认真而笨拙的自己。</p>
+          <p>在五姐妹中，她是最早喜欢上风太郎的那一个；而在遇到他之前，她其实对自己没什么自信。她把「历女」的身份当成只属于自己的秘密（后来只告诉了二乃），同时也很擅长变装——四位姐妹都被她假扮过。</p>
+          <ul class="mini-list">
+            <li>五姐妹中学力最强，经常被拜托辅导功课</li>
+            <li>运动神经有点苦手，跑几步就会累</li>
+            <li>害羞时会偷偷观察喜欢的人，却又不敢对视</li>
+            <li>喜欢抹茶、绿茶，也爱看有武将登场的电影与纪录片</li>
+            <li>料理和运动都不拿手，变装技术却是一流</li>
+          </ul>
+        </article>
+
+        <article class="card traits-card reveal">
+          <div class="card-title"><span class="t-ico" aria-hidden="true">★</span><h3>萌点关键词</h3></div>
+          <div class="trait-chips">
+              <span>长直</span><span>弱气</span><span>暗恋</span><span>体力差</span><span>大小姐</span><span>五胞胎</span><span>历女</span><span>遮眼发</span><span>连裤袜</span><span>耳机</span><span>鼓脸颊</span><span>冷娇</span><span>温柔</span><span>黑暗料理</span><span>体育坐</span><span>店主</span>
+            </div>
+        </article>
+        </div>
+
+        <article class="card stat-card reveal">
+          <div class="card-title"><span class="t-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 6.6C10.6 5.3 8.6 4.8 6.4 4.8H3.8v12.4h3.3c1.9 0 3.6.6 4.9 1.7"/><path d="M12 6.6c1.4-1.3 3.4-1.8 5.6-1.8h2.6v12.4h-3.3c-1.9 0-3.6.6-4.9 1.7"/><path d="M12 6.6v12.3"/><path d="M6.2 8.3h3.1M6.2 11h3.1"/><path d="M14.7 8.3h3.1M14.7 11h3.1"/></svg></span><h3>角色资料卡</h3></div>
+          <dl class="stats">
+            <div class="stat"><dt>姓名</dt><dd>中野三玖（なかの みく）</dd></div>
+            <div class="stat"><dt>别号</dt><dd>三玖 · 39 · 玖玖玖</dd></div>
+            <div class="stat"><dt>罗马音</dt><dd>Nakano Miku</dd></div>
+            <div class="stat"><dt>作品</dt><dd>《五等分的新娘》</dd></div>
+            <div class="stat"><dt>身份</dt><dd>中野家五胞胎 · 三女</dd></div>
+            <div class="stat"><dt>生日</dt><dd>5月5日 · 金牛座</dd></div>
+            <div class="stat"><dt>登场年龄</dt><dd>17 岁（高中三年级）</dd></div>
+            <div class="stat"><dt>身高</dt><dd>159 cm</dd></div>
+            <div class="stat"><dt>血型</dt><dd>A 型</dd></div>
+            <div class="stat"><dt>体重</dt><dd>约 50 kg</dd></div>
+            <div class="stat"><dt>声优</dt><dd>伊藤美来（TV 动画）· 佐仓绫音（TVCM）</dd></div>
+            <div class="stat"><dt>兴趣</dt><dd>战国史 · 收集武将轶闻</dd></div>
+            <div class="stat"><dt>喜欢</dt><dd>抹茶苏打水、绿茶</dd></div>
+            <div class="stat"><dt>擅长科目</dt><dd>社会（历史）</dd></div>
+            <div class="stat"><dt>喜欢的动物</dt><dd>刺猬</dd></div>
+            <div class="stat"><dt>每日习惯</dt><dd>看早上的占卜情报</dd></div>
+            <div class="stat"><dt>特技</dt><dd>变装（四位姐妹都被她扮过）</dd></div>
+            <div class="stat"><dt>个人状态</dt><dd>咖啡店的美女店主（结局）</dd></div>
+            <div class="stat"><dt>角色歌</dt><dd>Lovely music ～三週間前までは白かった～（第1季）· 君が好き ～Three Feelings～（第2季）</dd></div>
+          </dl>
+          <p class="stats-note">※ 以上资料整理自萌娘百科等公开资料，仅供交流参考。</p>
+        </article>
+      </div>
+
+
+      <div class="card tip-card reveal">
+        <div class="tip-head">
+          <span class="t-ico" aria-hidden="true">?</span>
+          <div><h3>三玖小知识</h3><p class="en">Tap to learn more about Miku</p></div>
+        </div>
+        <p class="tip-text" id="tipText">三玖是五胞胎中学力最强的一位，常常辅导姐妹们学习。</p>
+        <button class="btn primary sm" id="tipBtn" type="button">换一个关于三玖的小知识</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CHARM ===== -->
+  <section class="section" id="charm">
+    <div class="wrap">
+      <header class="sec-head">
+        <p class="sec-overline reveal">CHARM</p>
+        <h2 class="sec-title reveal">三玖的魅力</h2>
+        <p class="sec-sub reveal">喜欢她的理由，远远不止一个</p>
+      </header>
+
+      <div class="charm-grid">
+        <article class="card charm-card reveal"><span class="kanji-badge c1" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 13.5a8 8 0 0 1 16 0"/><rect x="2.6" y="13" width="5.2" height="7.6" rx="2.6"/><rect x="16.2" y="13" width="5.2" height="7.6" rx="2.6"/><path d="M5.2 15.6v2.8"/><path d="M18.8 15.6v2.8"/></svg></span></span><h3>无口的温柔</h3><p>话不多，却总用行动默默关心身边的人。害羞时别过脸、又忍不住偷偷看你的样子，是全世界最可爱的犯规。</p></article>
+        <article class="card charm-card reveal"><span class="kanji-badge c2" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20.6 3.4 9.9 14.1"/><path d="M7.4 12.6 11.4 16.6"/><path d="M9.9 14.1 5.4 18.6"/><path d="M7.7 15.1 8.9 16.3"/><path d="M6.1 16.7 7.3 17.9"/></svg></span></span><h3>战国「历女」</h3><p>热爱战国史，能熟练地用武将名接龙、讲出各种轶闻。一聊到信长大人就双眼放光——这反差，谁能顶得住？</p></article>
+        <article class="card charm-card reveal"><span class="kanji-badge c3" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 12 6.6 8.4C5.1 7.4 3.2 8.3 3.2 10.2c0 1.9 1.9 2.8 3.4 1.8L12 12z"/><path d="M12 12l5.4-3.6c1.5-1 3.4-.1 3.4 1.8 0 1.9-1.9 2.8-3.4 1.8L12 12z"/><path d="M6.6 9.9 9.7 11.7"/><path d="M17.4 9.9 14.3 11.7"/><circle cx="12" cy="12" r="1.5"/><path d="M11.1 13.4 9.7 18"/><path d="M12.9 13.4 14.3 18"/></svg></span></span><h3>蓝色的她</h3><p>如代表色一般澄澈安静。在热闹的五姐妹中，她是最温柔的那抹蓝，不争不抢，却让人移不开目光。</p></article>
+        <article class="card charm-card reveal"><span class="kanji-badge c4" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 6.6C10.6 5.3 8.6 4.8 6.4 4.8H3.8v12.4h3.3c1.9 0 3.6.6 4.9 1.7"/><path d="M12 6.6c1.4-1.3 3.4-1.8 5.6-1.8h2.6v12.4h-3.3c-1.9 0-3.6.6-4.9 1.7"/><path d="M12 6.6v12.3"/><path d="M6.2 8.3h3.1M6.2 11h3.1"/><path d="M14.7 8.3h3.1M14.7 11h3.1"/></svg></span></span><h3>认真的努力家</h3><p>五姐妹中学力最强。为了喜欢的人、为了自己的梦想，她会把「认真」二字贯彻到底，闪闪发光。</p></article>
+        <article class="card charm-card reveal"><span class="kanji-badge c5" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3.6 19.7h16.8"/><path d="M6.2 19.7 7.4 11.6h9.2l1.2 8.1z"/><path d="M7 14.4h10"/><path d="M6.6 17.1h10.8"/><path d="M7.4 11.6c0-1.1.9-2 2-2h5.2c1.1 0 2 .9 2 2"/><circle cx="12" cy="7.2" r="1.5"/><path d="M12 8.7v1"/></svg></span></span><h3>抹茶与日常</h3><p>喜欢抹茶苏打水，也享受亲手做料理的时光。那些平凡细碎的日常，因为认真生活而变得格外耀眼。</p></article>
+        <article class="card charm-card reveal"><span class="kanji-badge c6" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="4.8" y="6" width="6.6" height="5.4" rx="1.3"/><rect x="12.6" y="6" width="6.6" height="5.4" rx="1.3"/><rect x="4.8" y="12.6" width="6.6" height="5.4" rx="1.3"/><rect x="12.6" y="12.6" width="6.6" height="5.4" rx="1.3"/></svg></span></span><h3>笨拙而勇敢的爱</h3><p>从不敢表达，到一次次鼓起勇气告白——她是五姐妹中告白次数最多的那个。她的恋爱，是一段最动人的成长物语。</p></article>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ===== GALLERY 图片展示 ===== -->
+  <section class="section" id="gallery">
+    <div class="wrap">
+      <header class="sec-head">
+        <p class="sec-overline reveal">GALLERY</p>
+        <h2 class="sec-title reveal">三玖图片展示</h2>
+        <p class="sec-sub reveal">大图在上、缩略图在下，自动轮播 · 也可点选或左右滑动</p>
+      </header>
+
+      <div class="gal reveal" id="gal">
+        <div class="gal-stage" id="galStage" data-parallax="0.05" tabindex="0" role="region" aria-label="三玖图片展示，可左右切换">
+          <div class="gal-slides" id="galSlides">
+          <figure class="gal-slide is-active" data-title="三玖 · 主视觉" data-sub="纯白的婚纱独自绽开" data-pos="top">
+            <span class="gal-bg" style="background-image:url('assets/img/gallery/01-dress.webp')"></span>
+            <img src="assets/img/gallery/01-dress.webp" alt="三玖 · 主视觉" loading="eager" fetchpriority="high" decoding="async" />
+          </figure>
+          <figure class="gal-slide" data-title="山下少女" data-sub="浴衣尽显温婉气质">
+            <span class="gal-bg" style="background-image:url('assets/img/gallery/02-yukata.webp')"></span>
+            <img src="assets/img/gallery/02-yukata.webp" alt="山下少女" loading="lazy" decoding="async" />
+          </figure>
+          <figure class="gal-slide" data-title="三女与猫" data-sub="少女不为人知的一面">
+            <span class="gal-bg" style="background-image:url('assets/img/gallery/03-cat.webp')"></span>
+            <img src="assets/img/gallery/03-cat.webp" alt="三女与猫" loading="lazy" decoding="async" />
+          </figure>
+          <figure class="gal-slide" data-title="真假三玖" data-sub="三玖？五月？">
+            <span class="gal-bg" style="background-image:url('assets/img/gallery/04-twin.webp')"></span>
+            <img src="assets/img/gallery/04-twin.webp" alt="真假三玖" loading="lazy" decoding="async" />
+          </figure>
+        </div>
+
+          <button class="gal-arrow prev" id="galPrev" type="button" aria-label="上一张">‹</button>
+          <button class="gal-arrow next" id="galNext" type="button" aria-label="下一张">›</button>
+
+          <div class="gal-caption">
+            <b id="galTitle">三玖 · 主视觉</b>
+            <span id="galSub">纯白的婚纱独自绽开</span>
+          </div>
+          <div class="gal-dots" id="galDots"></div>
+          <div class="gal-progress"><i id="galBar"></i></div>
+        </div>
+
+        <div class="gal-thumbs" id="galThumbs" aria-label="缩略图列表"></div>
+        <p class="gal-hint">鼠标悬停暂停自动播放 · 点击缩略图可切换 · 手机端可左右滑动</p>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ===== ALBUMS 专辑（3D 立体抽拉） ===== -->
+  <section class="section" id="albums">
+    <div class="wrap">
+      <header class="sec-head">
+        <p class="sec-overline reveal">ALBUMS</p>
+        <h2 class="sec-title reveal">三玖的专辑</h2>
+        <p class="sec-sub reveal">五等分的四种心意 · 点击封面把它抽出来</p>
+      </header>
+
+      <div class="disc-rack reveal" id="discRack">
+        <div class="rack-stage" id="rackStage" aria-label="专辑封面展示，可点击或左右切换">
+          <span class="rack-floor" aria-hidden="true"></span>
+                    <figure class="disc" data-title="五等分的心意" data-jp="五等分の気持ち" data-sub="ALBUM 01 / 04" tabindex="0">
+            <span class="disc-shadow" aria-hidden="true"></span>
+            <div class="case">
+              <span class="inner-disc" aria-hidden="true"></span>
+              <div class="face back" aria-hidden="true"></div>
+              <div class="face edge right" aria-hidden="true"></div>
+              <div class="face edge left" aria-hidden="true"></div>
+              <div class="face front"><img src="assets/img/albums/01.webp" alt="五等分的心意" loading="eager" decoding="async" /></div>
+            </div>
+          </figure>
+                    <figure class="disc" data-title="五等分的形态" data-jp="五等分のカタチ" data-sub="ALBUM 02 / 04" tabindex="0">
+            <span class="disc-shadow" aria-hidden="true"></span>
+            <div class="case">
+              <span class="inner-disc" aria-hidden="true"></span>
+              <div class="face back" aria-hidden="true"></div>
+              <div class="face edge right" aria-hidden="true"></div>
+              <div class="face edge left" aria-hidden="true"></div>
+              <div class="face front"><img src="assets/img/albums/02.webp" alt="五等分的形态" loading="lazy" decoding="async" /></div>
+            </div>
+          </figure>
+                    <figure class="disc" data-title="五等分的未来" data-jp="五等分の未来" data-sub="ALBUM 03 / 04" tabindex="0">
+            <span class="disc-shadow" aria-hidden="true"></span>
+            <div class="case">
+              <span class="inner-disc" aria-hidden="true"></span>
+              <div class="face back" aria-hidden="true"></div>
+              <div class="face edge right" aria-hidden="true"></div>
+              <div class="face edge left" aria-hidden="true"></div>
+              <div class="face front"><img src="assets/img/albums/03.webp" alt="五等分的未来" loading="lazy" decoding="async" /></div>
+            </div>
+          </figure>
+                    <figure class="disc" data-title="五等分的笑颜" data-jp="五等分の笑顔" data-sub="ALBUM 04 / 04" tabindex="0">
+            <span class="disc-shadow" aria-hidden="true"></span>
+            <div class="case">
+              <span class="inner-disc" aria-hidden="true"></span>
+              <div class="face back" aria-hidden="true"></div>
+              <div class="face edge right" aria-hidden="true"></div>
+              <div class="face edge left" aria-hidden="true"></div>
+              <div class="face front"><img src="assets/img/albums/04.webp" alt="五等分的笑颜" loading="lazy" decoding="async" /></div>
+            </div>
+          </figure>
+
+        </div>
+
+        <div class="rack-caption">
+          <span class="rack-jp" id="rackJp">五等分の気持ち</span>
+          <b id="rackTitle">五等分的心意</b>
+          <span class="rack-meta" id="rackSub">ALBUM 01 / 04</span>
+        </div>
+        <div class="rack-dots" id="rackDots" aria-label="专辑切换"></div>
+        <div class="rack-progress" aria-hidden="true"><i id="rackBar"></i></div>
+        <p class="rack-hint">点击左右封面即可切换 · 滚轮 / 拖动 / ← → 也可 · 悬停暂停</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== QUOTES ===== -->
+  <section class="section" id="quotes">
+    <div class="wrap">
+      <header class="sec-head">
+        <p class="sec-overline reveal">MOMENTS</p>
+        <h2 class="sec-title reveal">名场面 · 台词</h2>
+        <p class="sec-sub reveal">那些让人心动的瞬间，都藏在她的只言片语里</p>
+      </header>
+
+      <div class="quotes">
+        <article class="quote reveal">
+          <span class="q-mark" aria-hidden="true">”</span>
+          <p class="q-jp">「責任とってよね。」</p>
+          <p class="q-cn">“你要负责哦。”</p>
+          <p class="q-scene"><b>心动开始</b> —— 上杉风太郎对五姐妹说出「你们做得到的」。这句话，成了她喜欢上他的契机，也成了她开始喜欢自己的起点。</p>
+        </article>
+        <article class="quote reveal">
+          <span class="q-mark" aria-hidden="true">”</span>
+          <p class="q-jp">「好きです。」——「……骗你的。自意識過剰くん。」</p>
+          <p class="q-cn">“我喜欢你。” ——“……骗你的，你真是自作多情呢。”</p>
+          <p class="q-scene"><b>京都 · 修学旅行</b> —— 旅行的最后一天，她终于指向他、说出那句练习过无数次的话，又在下一秒慌忙藏回心底。笨拙又勇敢，是她最动人的告白。</p>
+        </article>
+        <article class="quote reveal">
+          <span class="q-mark" aria-hidden="true">”</span>
+          <p class="q-jp">「いいよ…恋って、こんなにもつらいんだね…ありがとう、一花。」</p>
+          <p class="q-cn">“没关系……原来恋爱，是这么痛苦的事啊……谢谢你，一花。”</p>
+          <p class="q-scene"><b>姐妹与眼泪</b> —— 被最亲近的姐姐伤害之后，她却先一步原谅了对方。因为她们，都是同样笨拙地喜欢着同一个人。</p>
+        </article>
+        <article class="quote reveal">
+          <span class="q-mark" aria-hidden="true">”</span>
+          <p class="q-jp">「早いもの勝ちだから。」</p>
+          <p class="q-cn">“因为恋爱，是先到先得呀。”</p>
+          <p class="q-scene"><b>小小的好胜</b> —— 察觉姐姐们也开始在意风太郎，她下定决心：要用自己最擅长的方式——期末考试——赢过所有人，争取喜欢的人。</p>
+        </article>
+        <article class="quote reveal">
+          <span class="q-mark" aria-hidden="true">”</span>
+          <p class="q-jp">「私は私を好きになれたんだ。」</p>
+          <p class="q-cn">“我终于，能够喜欢上这样的自己了。”</p>
+          <p class="q-scene"><b>成长与救赎</b> —— 曾经觉得自己是五姐妹中最差劲的那个；如今却能坦然说出这句话。与风太郎相遇的每一天，都让她一点点喜欢上自己。</p>
+        </article>
+      </div>
+      <p class="quote-note reveal">※ 台词为日语原文与中文意译整理，场景为概括性描述；仅供粉丝交流，请以原作与动画为准。</p>
+    </div>
+  </section>
+
+  <!-- ===== ABOUT ===== -->
+  <section class="section" id="about">
+    <div class="wrap">
+      <header class="sec-head">
+        <p class="sec-overline reveal">ABOUT</p>
+        <h2 class="sec-title reveal">关于作品与本站</h2>
+      </header>
+
+      <div class="about-grid">
+        <article class="card about-card reveal">
+          <div class="card-title"><span class="t-ico" aria-hidden="true">作</span><h3>《五等分的新娘》</h3></div>
+          <dl class="about-dl">
+            <div><dt>原作</dt><dd>春場ねぎ（春场葱）</dd></div>
+            <div><dt>连载</dt><dd>周刊少年Magazine · 2017—2020</dd></div>
+            <div><dt>动画</dt><dd><span class="watch-links"><a class="watch-link" href="https://www.bilibili.com/bangumi/play/ss26283?spm_id_from=333.337.0.0" target="_blank" rel="noopener noreferrer" aria-label="前往 B 站观看《五等分的新娘》第一季（新窗口打开）"><svg class="watch-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.5 5.5v13l10-6.5z"/></svg>第1期 2019<span class="watch-tip" aria-hidden="true">点击前往 B 站观看第一季</span></a><a class="watch-link" href="https://www.bilibili.com/bangumi/play/ss36166?spm_id_from=333.337.0.0" target="_blank" rel="noopener noreferrer" aria-label="前往 B 站观看《五等分的新娘》第二季（新窗口打开）"><svg class="watch-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.5 5.5v13l10-6.5z"/></svg>第2期 2021<span class="watch-tip" aria-hidden="true">点击前往 B 站观看第二季</span></a><span class="watch-plain">剧场版等</span></span></dd></div>
+          </dl>
+          <p>贫穷而优秀的高中生上杉风太郎，受聘成为中野家五胞胎姐妹的家庭教师。他的任务是：让「讨厌学习」的五姐妹顺利高中毕业——而他未来的新娘，正是五胞胎中的某一位。</p>
+          <div class="sisters">
+            <span>一花</span><span>二乃</span><span class="you">三玖</span><span>四叶</span><span>五月</span>
+          </div>
+          <p class="watch-hint">小提示：点击上方「第1期 / 第2期」即可前往 B 站观看 ▶</p>
+        </article>
+
+        <article class="card about-card reveal">
+          <div class="card-title"><span class="t-ico" aria-hidden="true">♥</span><h3>关于本站</h3></div>
+          <p>这是一个由粉丝为中野三玖制作的展示页面。页面中的角色设定、剧情与台词，均整理自公开资料与作品本身；图片均来自于网络。</p>
+          <p>本站为同人应援性质，与官方无任何关联。《五等分的新娘》及相关角色版权归原作者 春場ねぎ、讲谈社及制作委员会所有。喜欢三玖的话，请务必支持原作漫画、动画与周边哦！</p>
+          <p class="love-line"><strong>—— 献给天下第一的三玖 💙</strong></p>
+          <p class="up-hint"><a class="up-hint-link" href="#mujiuHome">点击底部进入UP主页 <span aria-hidden="true">↓</span></a></p>
+        </article>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+  <div class="wrap footer-inner">
+    <div class="f-brand">
+      <span class="brand-badge" aria-hidden="true">玖</span>
+      <span><b>中野三玖 应援页</b><small>Made with 💙 for Miku</small></span>
+    </div>
+    <p class="f-copy">本站为粉丝自制同人页面 · 《五等分的新娘》版权归 春場ねぎ・讲谈社／五等分的新娘制作委员会 所有 · 仅供学习交流</p>
+
+    <!-- 作者署名 -->
+    <div class="footer-sign">
+      <a class="mujiu" id="mujiuHome" href="https://space.bilibili.com/3461578334669115?spm_id_from=333.1007.0.0"
+         target="_blank" rel="noopener noreferrer"
+         aria-label="沐玖.未央 MuJiuForever 的 B 站主页（在新窗口打开）">
+        <span class="mujiu-tip" aria-hidden="true"><svg class="mj-bili" viewBox="0 0 24 24"><path d="M7 3.6 9.4 6.1h5.2L17 3.6" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><rect x="3.6" y="6.6" width="16.8" height="12.8" rx="4.2" fill="none" stroke="currentColor" stroke-width="1.7"/><circle cx="9.3" cy="12.4" r="1.5" fill="currentColor"/><circle cx="14.7" cy="12.4" r="1.5" fill="currentColor"/></svg>点击跳转 Bilibili 主页</span>
+        <span class="mj-flower" aria-hidden="true">✿</span>
+        <span class="mj-cn">沐玖.未央</span>
+        <span class="mj-en">MuJiuForever</span>
+        <span class="mj-flower" aria-hidden="true">✿</span>
+      </a>
+    </div>
+  </div>
+</footer>
+
+
+<!-- ===== AI 助手快捷入口（点击跳到 AI 板块） ===== -->
+<button class="ai-fab ai-fab--float" id="aiFab" type="button" aria-label="跳到三玖 AI 生活助手" aria-expanded="false">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <path d="M4 13.2a8 8 0 0 1 16 0"/><path d="M3.6 13.4h3.4v6.2a1.7 1.7 0 0 1-3.4 0z"/><path d="M20.4 13.4H17v6.2a1.7 1.7 0 0 0 3.4 0z"/>
+  </svg>
+  <span class="ai-fab-dot" aria-hidden="true"></span>
+</button>
+
+<!-- ===== 背景音乐控件（收起为小耳机图标，悬停展开） ===== -->
+<div class="bgm" id="bgm" role="region" aria-label="背景音乐：告白（櫻井美希）">
+  <audio id="bgmAudio" loop preload="metadata">
+    <source src="assets/music/bgm.mp3" type="audio/mpeg" />
+  </audio>
+
+  <button class="bgm-badge" id="bgmBadge" type="button" aria-label="音乐控制：播放 / 暂停（悬停或点按展开）" title="播放 / 暂停">
+    <svg class="ico-head" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M4 13.2a8 8 0 0 1 16 0"/>
+      <path d="M3.6 13.4h3.4v6.2a1.7 1.7 0 0 1-3.4 0z"/>
+      <path d="M20.4 13.4H17v6.2a1.7 1.7 0 0 0 3.4 0z"/>
+    </svg>
+  </button>
+
+  <div class="bgm-meta">
+    <b>告白</b>
+    <small id="bgmState">点击播放 BGM</small>
+  </div>
+
+  <span class="bgm-eq" aria-hidden="true"><i></i><i></i><i></i></span>
+
+  <button class="bgm-btn play" id="bgmToggle" type="button" aria-label="播放背景音乐" aria-pressed="false">
+    <svg class="ico-play" viewBox="0 0 24 24"><path d="M8.5 5.5v13l10-6.5z"/></svg>
+    <svg class="ico-pause" viewBox="0 0 24 24"><path d="M7.4 5h3.4v14H7.4zM13.2 5h3.4v14h-3.4z"/></svg>
+  </button>
+
+  <button class="bgm-btn mute" id="bgmMute" type="button" aria-label="静音" aria-pressed="false">
+    <svg class="ico-vol" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M4 9.8v4.4h3.2l4.3 3.6V6.2L7.2 9.8z" fill="currentColor" stroke="none"/>
+      <path d="M15.2 9.2a4.2 4.2 0 0 1 0 5.6"/>
+      <path d="M17.6 6.9a7.6 7.6 0 0 1 0 10.2"/>
+    </svg>
+    <svg class="ico-muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M4 9.8v4.4h3.2l4.3 3.6V6.2L7.2 9.8z" fill="currentColor" stroke="none"/>
+      <path d="M15.6 9.4l5.4 5.2M21 9.4l-5.4 5.2"/>
+    </svg>
+  </button>
+
+  <input class="bgm-vol" id="bgmVol" type="range" min="0" max="1" step="0.02" value="0.55" aria-label="音量" />
+</div>
+
+<button class="to-top" id="toTop" type="button" aria-label="返回顶部">↑</button>
+
+<!-- ===== 彩蛋：蓝色回信 ===== -->
+<div class="confess-layer" id="confessLayer" hidden aria-hidden="true">
+  <div class="confess-aurora" aria-hidden="true"></div>
+  <div class="confess-hearts" id="confessHearts" aria-hidden="true"></div>
+  <section class="confess-card" role="dialog" aria-modal="true" aria-labelledby="confessTitle">
+    <div class="confess-seal" aria-hidden="true">39</div>
+    <p class="confess-eyebrow">39号心意收件箱</p>
+    <h3 id="confessTitle">心意已珍藏</h3>
+    <p class="confess-from" id="confessFrom">收到来自「你」的心意 · 1 份</p>
+    <p class="confess-date" id="confessDate"></p>
+    <p class="confess-note">……嗯。以后也让我，继续陪着你吧。</p>
+    <button class="confess-close" id="confessClose" type="button">收好这份心意</button>
+  </section>
+</div>
+
+<script src="assets/js/main.js?v=20261004reset"></script>
+<script src="assets/js/ai.js?v=20261004weather"></script>
+</body>
+</html>

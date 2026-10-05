@@ -1,0 +1,16 @@
+config.json
+.env
+backups/
+_source/
+输出/
+比赛提交材料/
+_srv.log
+_srv.err
+_server.log
+_server.err
+_qa_*
+_tch_*.html
+*.bak
+data/memory/*.json
+data/knowledge/schools/*/raw/
+data/knowledge/schools/*/documents.jsonl

@@ -1,0 +1,21 @@
+services:
+  - type: web
+    name: mikuai-campus-assistant
+    runtime: node
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /api/health
+    envVars:
+      - key: MODEL_BASE_URL
+        value: https://api.deepseek.com/chat/completions
+      - key: MODEL_API_KEY
+        sync: false
+      - key: MODEL_NAME
+        value: deepseek-flash
+      - key: MODEL_TEMPERATURE
+        value: "0.85"
+      - key: SEARCH_PROVIDER
+        value: bing
+      - key: RATE_LIMIT_PER_MIN
+        value: "40"
