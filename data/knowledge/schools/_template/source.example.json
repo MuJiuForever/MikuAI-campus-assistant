@@ -1,0 +1,27 @@
+{
+  "school_id": "your-school-id",
+  "school_name": "学校名称",
+  "source_name": "资源站名称",
+  "base_url": "https://example.edu.cn",
+  "official": false,
+  "license": "请填写来源许可",
+  "attribution": "请填写来源归属与引用要求",
+  "discovery": {
+    "type": "sitemap",
+    "url": "https://example.edu.cn/sitemap.xml",
+    "include_prefixes": ["/docs"],
+    "exclude_prefixes": ["/admin", "/private"]
+  },
+  "content": {
+    "type": "markdown",
+    "templates": ["/doc/{path}.md", "/doc/{path}/index.md"],
+    "course_metadata_only": false
+  },
+  "crawl": {
+    "concurrency": 3,
+    "delay_ms": 250,
+    "timeout_seconds": 25,
+    "max_pages": 1000,
+    "user_agent": "MikuAI-KnowledgeBot/1.0 (+respects robots.txt)"
+  }
+}

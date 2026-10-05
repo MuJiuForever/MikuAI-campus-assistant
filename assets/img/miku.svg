@@ -1,0 +1,129 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 520" role="img" aria-labelledby="t d">
+  <title id="t">中野三玖风格头像</title>
+  <desc id="d">粉丝绘制的蓝色长发、佩戴耳机的少女风格化示意图</desc>
+  <defs>
+    <linearGradient id="hair" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#8fb9ff"/>
+      <stop offset=".5" stop-color="#5f8fe8"/>
+      <stop offset="1" stop-color="#3a5fb4"/>
+    </linearGradient>
+    <linearGradient id="hairDeep" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#6d96e8"/>
+      <stop offset="1" stop-color="#2f4f9e"/>
+    </linearGradient>
+    <linearGradient id="blazer" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#2c4076"/>
+      <stop offset="1" stop-color="#182350"/>
+    </linearGradient>
+    <radialGradient id="eye" cx=".38" cy=".35" r="1">
+      <stop offset="0" stop-color="#c8f6ff"/>
+      <stop offset=".45" stop-color="#4fb2ff"/>
+      <stop offset="1" stop-color="#2a6ae0"/>
+    </radialGradient>
+    <radialGradient id="glow" cx=".5" cy=".5" r=".5">
+      <stop offset="0" stop-color="#9cc4ff" stop-opacity=".28"/>
+      <stop offset="1" stop-color="#9cc4ff" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <circle cx="210" cy="300" r="205" fill="url(#glow)"/>
+
+  <!-- 后发 -->
+  <path d="M210 128 C124 128 82 186 84 292 C86 376 104 462 120 502 L300 502 C316 462 334 376 336 292 C338 186 296 128 210 128 Z" fill="url(#hairDeep)"/>
+
+  <!-- 制服肩部 -->
+  <path d="M90 520 C90 486 106 462 130 452 C150 445 172 446 188 450 L210 457 L232 450 C248 446 270 445 290 452 C314 462 330 486 330 520 Z" fill="url(#blazer)"/>
+  <!-- 衬衫 -->
+  <path d="M186 452 L234 452 L210 494 Z" fill="#f3f7ff"/>
+  <circle cx="210" cy="476" r="2.1" fill="#e0c37c"/>
+  <circle cx="210" cy="489" r="2.1" fill="#e0c37c"/>
+
+  <!-- 脖颈 -->
+  <rect x="193" y="400" width="34" height="62" rx="9" fill="#ffe9da"/>
+  <path d="M193 412 C193 452 200 458 210 458 C220 458 227 452 227 412 L227 400 L193 400 Z" fill="#f6d3bd" opacity=".55"/>
+
+  <!-- 脸 -->
+  <ellipse cx="210" cy="300" rx="82" ry="92" fill="#ffe9da"/>
+  <path d="M130 310 C128 260 150 220 190 210 C160 226 146 262 148 312 C149 344 158 366 172 380 C152 366 134 344 130 310 Z" fill="#f6d3bd" opacity=".5"/>
+  <path d="M290 310 C292 260 270 220 230 210 C260 226 274 262 272 312 C271 344 262 366 248 380 C268 366 286 344 290 310 Z" fill="#f6d3bd" opacity=".5"/>
+
+  <!-- 眼睛 -->
+  <g id="eyes">
+    <g>
+      <ellipse cx="168" cy="338" rx="17" ry="20" fill="#22315e"/>
+      <circle cx="168" cy="339" r="11.5" fill="url(#eye)"/>
+      <circle cx="168" cy="341" r="5.5" fill="#0c1a3a"/>
+      <ellipse cx="163" cy="332" rx="5" ry="7.5" fill="#fff" opacity=".95" transform="rotate(-18 163 332)"/>
+      <circle cx="174" cy="345" r="2.6" fill="#fff" opacity=".85"/>
+      <path d="M153 326 Q142 331 139 344" fill="none" stroke="#22315e" stroke-width="3.4" stroke-linecap="round"/>
+    </g>
+    <g>
+      <ellipse cx="252" cy="338" rx="17" ry="20" fill="#22315e"/>
+      <circle cx="252" cy="339" r="11.5" fill="url(#eye)"/>
+      <circle cx="252" cy="341" r="5.5" fill="#0c1a3a"/>
+      <ellipse cx="247" cy="332" rx="5" ry="7.5" fill="#fff" opacity=".95" transform="rotate(-18 247 332)"/>
+      <circle cx="258" cy="345" r="2.6" fill="#fff" opacity=".85"/>
+      <path d="M267 326 Q278 331 281 344" fill="none" stroke="#22315e" stroke-width="3.4" stroke-linecap="round"/>
+    </g>
+  </g>
+
+  <!-- 腮红 -->
+  <ellipse cx="164" cy="362" rx="14" ry="7" fill="#ff9fba" opacity=".45"/>
+  <ellipse cx="256" cy="362" rx="14" ry="7" fill="#ff9fba" opacity=".45"/>
+
+  <!-- 嘴 -->
+  <path d="M201 382 Q210 372 219 382" fill="none" stroke="#cf6680" stroke-width="3.2" stroke-linecap="round"/>
+
+  <!-- 刘海 -->
+  <path d="M132 300
+    C 120 238 148 160 210 158
+    C 272 160 300 238 288 300
+    L 284 318
+    Q 274 306 266 310
+    L 260 322
+    Q 250 306 242 310
+    L 236 320
+    Q 226 306 218 310
+    L 212 324
+    Q 202 308 194 312
+    L 188 320
+    Q 178 306 170 312
+    L 164 320
+    Q 154 306 146 312
+    L 140 316
+    Q 132 310 132 300 Z" fill="url(#hair)"/>
+
+  <!-- 侧发 -->
+  <path d="M154 184 C122 216 106 272 104 334 C102 392 112 434 106 456 C100 470 82 456 84 430 C84 358 92 270 120 206 C130 184 146 172 154 184 Z" fill="url(#hair)"/>
+  <path d="M266 184 C298 216 314 272 316 334 C318 392 308 434 314 456 C320 470 338 456 336 430 C336 358 328 270 300 206 C290 184 274 172 266 184 Z" fill="url(#hair)"/>
+
+  <!-- 高光 -->
+  <path d="M148 196 Q190 170 236 180" fill="none" stroke="#dcebff" stroke-width="6" stroke-linecap="round" opacity=".5"/>
+  <path d="M160 220 Q205 200 252 212" fill="none" stroke="#dcebff" stroke-width="3.6" stroke-linecap="round" opacity=".3"/>
+
+  <!-- 耳机（挂在颈间） -->
+  <g>
+    <g transform="translate(150 460) rotate(-12)">
+      <rect x="-20" y="-26" width="40" height="50" rx="15" fill="#2a3560"/>
+      <rect x="-20" y="-26" width="40" height="24" rx="15" fill="#42528c"/>
+      <rect x="-11" y="-8" width="22" height="30" rx="11" fill="#19244d"/>
+      <rect x="-7" y="-5" width="14" height="24" rx="7" fill="#0f1737"/>
+    </g>
+    <g transform="translate(270 460) rotate(12)">
+      <rect x="-20" y="-26" width="40" height="50" rx="15" fill="#2a3560"/>
+      <rect x="-20" y="-26" width="40" height="24" rx="15" fill="#42528c"/>
+      <rect x="-11" y="-8" width="22" height="30" rx="11" fill="#19244d"/>
+      <rect x="-7" y="-5" width="14" height="24" rx="7" fill="#0f1737"/>
+    </g>
+  </g>
+
+  <!-- 星光 -->
+  <g fill="#fff">
+    <path d="M96 240 Q96 250 86 250 Q96 250 96 260 Q96 250 106 250 Q96 250 96 240 Z" opacity=".85"/>
+    <path d="M342 258 Q342 266 334 266 Q342 266 342 274 Q342 266 350 266 Q342 266 342 258 Z" opacity=".7"/>
+    <path d="M76 340 Q76 346 70 346 Q76 346 76 352 Q76 346 82 346 Q76 346 76 340 Z" opacity=".6"/>
+    <path d="M352 378 Q352 384 346 384 Q352 384 352 390 Q352 384 358 384 Q352 384 352 378 Z" opacity=".75"/>
+    <path d="M118 120 Q118 127 111 127 Q118 127 118 134 Q118 127 125 127 Q118 127 118 120 Z" opacity=".8"/>
+    <path d="M330 152 Q330 157 325 157 Q330 157 330 162 Q330 157 335 157 Q330 157 330 152 Z" opacity=".65"/>
+  </g>
+</svg>

@@ -1,0 +1,86 @@
+/* ============================================================
+   风格变体 ③ 手账 · 同人志风（Zine / Scrapbook）
+   米白纸感 · 手写体 · 胶带 · 拍立得相框 · 深棕文字
+   ============================================================ */
+:root{--paper:#f4ecdf;--paper-2:#fffaf2;--ink:#3a322a;--ink-soft:#7a6d5e;
+  --accent:#3f7fc4;--accent-2:#d98aa6;--line:rgba(58,50,42,.2);--line-soft:rgba(58,50,42,.1);--card:#fffaf2;}
+body{background-color:#efe6d7;color:var(--ink);
+  background-image:radial-gradient(rgba(58,50,42,.05) 1px,transparent 1px),linear-gradient(180deg,#f7f0e4,#ece1cf);
+  background-size:22px 22px,100% 100%;}
+#sky,.aurora,.petals{display:none!important;}
+
+/* 文字转深色 */
+.hero-desc,.sec-sub,.card p,.mini-list li,.stat dd,.quote p,.quote-note,.f-copy,
+.tip-card .tip-text,.extra-dl dd,.up-hint-link{color:#4a4036!important;}
+.sec-title,.hero-title .cn{background:none!important;-webkit-background-clip:initial!important;background-clip:initial!important;
+  color:var(--ink)!important;filter:none!important;text-shadow:none!important;}
+.hero-title .cn{letter-spacing:.1em;}
+.hero-sub{color:#5c5145!important;}
+.hero-sub em{color:var(--accent-2)!important;}
+
+/* 卡片 = 纸张（带胶带） */
+.card{position:relative;background:var(--paper-2)!important;border:1px solid var(--line)!important;border-radius:6px!important;
+  box-shadow:0 3px 0 rgba(58,50,42,.08),0 12px 26px rgba(58,50,42,.10)!important;
+  backdrop-filter:none!important;-webkit-backdrop-filter:none!important;}
+.card:hover{transform:translateY(-2px)!important;border-color:var(--line)!important;}
+.card::before{content:"";position:absolute;top:-10px;left:22px;width:72px;height:20px;pointer-events:none;
+  background:rgba(217,138,166,.38);border-left:1px dashed rgba(255,255,255,.7);border-right:1px dashed rgba(255,255,255,.7);
+  transform:rotate(-6deg);}
+.charm-card::before{left:auto;right:22px;transform:rotate(5deg);background:rgba(63,127,196,.34);}
+.kanji-badge,.t-ico{border-radius:14px!important;box-shadow:0 2px 0 rgba(58,50,42,.16)!important;}
+
+/* 顶栏 & 目录 */
+.topbar{background:rgba(247,240,228,.97)!important;border-bottom:1px solid var(--line)!important;}
+.topbar.scrolled{box-shadow:0 4px 14px rgba(58,50,42,.10)!important;}
+.brand-text b{color:var(--ink)!important;}
+.brand-text small{color:var(--ink-soft)!important;}
+.nav{background:var(--paper-2)!important;border-color:var(--line)!important;}
+.nav-link{color:#4a4036!important;}
+.nav-link:hover{color:var(--ink)!important;background:rgba(58,50,42,.06)!important;}
+.nav-link.active{color:var(--accent)!important;}
+body.nav-open::after{background:rgba(58,50,42,.28)!important;}
+
+/* 章节标题：手写下划线 */
+.sec-overline{color:var(--accent)!important;}
+.sec-head::after{content:"";display:block;width:64px;height:2px;margin:16px auto 0;background:var(--ink);opacity:.22;}
+
+/* 按钮 / 标签 */
+.btn{border-radius:999px;}
+.btn.primary{background:var(--accent);box-shadow:0 3px 0 rgba(58,50,42,.18)!important;}
+.btn.ghost{color:#5c5145!important;border-color:var(--line)!important;background:#fffaf2!important;}
+.chip{background:#fff8ec!important;border-color:var(--line)!important;color:#5c5145!important;}
+.trait-chips span{background:#fff8ec!important;border-color:var(--line)!important;color:#4a4036!important;}
+.watch-link{background:#fff8ec!important;border-color:var(--line)!important;color:#4a4036!important;}
+.quote{background:#fffdf8!important;border-color:var(--line)!important;border-left:3px solid var(--accent-2)!important;}
+.q-jp{color:#3a322a!important;}
+.q-cn{color:#b5647f!important;}
+
+/* 立绘 / 画廊 / 专辑：相纸感 */
+.portrait-card{background:#fffaf2!important;border:1px solid var(--line)!important;box-shadow:0 6px 18px rgba(58,50,42,.14)!important;}
+.p-ring{display:none!important;}
+.gal-stage{background:#fff!important;border:1px solid var(--line)!important;border-radius:4px!important;
+  padding:10px 10px 30px!important;box-shadow:0 8px 22px rgba(58,50,42,.14)!important;}
+.rack-caption b,.rack-caption .rack-jp{color:var(--ink)!important;}
+.rack-caption .rack-meta{color:var(--ink-soft)!important;}
+.rack-dot{background:rgba(58,50,42,.25)!important;}
+.rack-dot.is-active{background:var(--accent)!important;box-shadow:none!important;}
+.footer{background:#e9dfcd!important;border-top:1px solid var(--line)!important;}
+.f-copy{color:var(--ink-soft)!important;}
+.mujiu .mj-cn,.mujiu .mj-en{background:none!important;-webkit-text-fill-color:var(--ink)!important;color:var(--ink)!important;}
+
+/* 音乐控件：米白卡片 */
+.bgm{background:rgba(255,250,242,.97)!important;border-color:var(--line)!important;
+  box-shadow:0 4px 14px rgba(58,50,42,.14)!important;}
+.bgm-meta b{color:var(--ink)!important;}
+.bgm-meta small{color:var(--ink-soft)!important;}
+.bgm-btn{background:#fff!important;border-color:var(--line)!important;color:#5c5145!important;}
+.to-top{background:#fffaf2!important;border-color:var(--line)!important;color:var(--ink)!important;}
+
+/* 动效克制 */
+[data-parallax]{transform:none!important;}
+.p-frame img{animation:none!important;transform:none!important;}
+.float-chip{animation:none!important;background:#fff8ec!important;border-color:var(--line)!important;color:var(--ink)!important;}
+.reveal{transition:opacity .5s ease!important;transform:none!important;filter:none!important;}
+.reveal.in{transform:none!important;}
+.sec-head .reveal,.charm-grid .reveal,.quotes .reveal,
+.quotes .reveal:nth-child(odd),.quotes .reveal:nth-child(even),.gal.reveal{transform:none!important;}

@@ -1,0 +1,21 @@
+{
+  "school_id": "cqu-openlib",
+  "school_name": "重庆大学",
+  "source_name": "CQU-openlib 重庆大学资源共享计划",
+  "base_url": "https://cqu-openlib.cn",
+  "official": false,
+  "license": "GPL-3.0",
+  "attribution": "内容来自 CQU-openlib 开源社区，非学校官方资料；回答时应保留来源链接。",
+  "generated_at": "2026-10-03T23:06:58+0800",
+  "documents": 551,
+  "chunks": 3498,
+  "catalog": 4369,
+  "categories": [
+    "学业",
+    "技巧",
+    "杂项",
+    "生活",
+    "社团",
+    "贡献者"
+  ]
+}

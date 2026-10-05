@@ -1,0 +1,289 @@
+/* ============================================================
+   三玖 AI 生活助手（聊天组件）
+   ============================================================ */
+.ai{position:fixed;right:22px;bottom:96px;z-index:70;font-family:var(--font-sans)}
+.ai-fab{position:relative;width:56px;height:56px;border-radius:50%;display:grid;place-items:center;cursor:pointer;color:#fff;
+  border:1px solid rgba(150,200,255,.5);background:radial-gradient(circle at 32% 28%,#7cc0ff,#3a5fd0 78%);
+  box-shadow:0 10px 28px rgba(60,120,255,.45),0 0 24px rgba(111,182,255,.35);transition:transform .25s,box-shadow .25s}
+.ai-fab:hover{transform:translateY(-3px) scale(1.05);box-shadow:0 14px 34px rgba(60,120,255,.6),0 0 30px rgba(111,182,255,.5)}
+.ai-fab svg{width:26px;height:26px}
+.ai-fab-dot{position:absolute;right:2px;top:2px;width:12px;height:12px;border-radius:50%;background:#7cf3c0;border:2px solid #0b1024;
+  animation:aiPulse 2s ease-in-out infinite}
+@keyframes aiPulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.25);opacity:.7}}
+
+.ai-panel{position:absolute;right:0;bottom:70px;width:min(370px,calc(100vw - 32px));max-height:min(560px,72vh);
+  display:flex;flex-direction:column;overflow:hidden;border-radius:20px;border:1px solid rgba(150,200,255,.28);
+  background:linear-gradient(180deg,rgba(14,20,44,.98),rgba(10,14,32,.98));
+  box-shadow:0 30px 70px rgba(2,6,24,.7),0 0 40px rgba(80,140,255,.18);
+  backdrop-filter:blur(16px);animation:aiIn .35s cubic-bezier(.2,.8,.2,1)}
+@keyframes aiIn{from{opacity:0;transform:translateY(14px) scale(.97)}to{opacity:1;transform:none}}
+.ai-panel[hidden]{display:none}
+
+.ai-head{display:flex;align-items:center;gap:11px;padding:13px 14px;border-bottom:1px solid rgba(255,255,255,.08);
+  background:linear-gradient(180deg,rgba(90,150,255,.12),transparent)}
+.ai-avatar{width:38px;height:38px;flex:none;display:grid;place-items:center;border-radius:12px;font-family:var(--font-ai);
+  font-size:1.3rem;color:#fff;background:linear-gradient(145deg,#7cc0ff,#3359c0)}
+.ai-id{flex:1;min-width:0;line-height:1.25}
+.ai-id b{display:block;font-size:.95rem;color:#eaf2ff}
+.ai-id small{font-size:.7rem;color:#8fa6cc}
+.ai-close{width:30px;height:30px;border-radius:9px;border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.05);
+  color:#cfe0ff;font-size:1.1rem;line-height:1;cursor:pointer}
+.ai-close:hover{background:rgba(255,255,255,.12)}
+
+.ai-log{flex:1;overflow-y:auto;padding:14px;display:flex;flex-direction:column;gap:10px;scroll-behavior:smooth}
+.ai-msg{max-width:82%;padding:10px 13px;border-radius:14px;font-size:.9rem;line-height:1.6;white-space:pre-wrap;word-break:break-word}
+.ai-msg.her{align-self:flex-start;color:#dbe9ff;background:rgba(111,182,255,.12);border:1px solid rgba(140,190,255,.2);border-bottom-left-radius:5px}
+.ai-msg.me{align-self:flex-end;color:#fff;background:linear-gradient(135deg,#4f9dff,#3a5fd0);border-bottom-right-radius:5px}
+.ai-msg.typing{color:#8fa6cc;letter-spacing:.2em}
+
+.ai-quick{display:flex;gap:7px;padding:8px 12px 4px;overflow-x:auto;scrollbar-width:none}
+.ai-quick::-webkit-scrollbar{display:none}
+.ai-quick button{flex:none;padding:6px 12px;border-radius:999px;font-size:.76rem;color:#cfe0ff;cursor:pointer;
+  background:rgba(111,182,255,.1);border:1px solid rgba(140,190,255,.28);transition:background .2s}
+.ai-quick button:hover{background:rgba(111,182,255,.24);color:#fff}
+
+.ai-form{display:flex;gap:8px;padding:10px 12px 6px}
+.ai-form input{flex:1;min-width:0;padding:11px 13px;border-radius:12px;font-size:.88rem;color:#eaf2ff;
+  background:rgba(255,255,255,.06);border:1px solid rgba(150,200,255,.24);outline:none}
+.ai-form input:focus{border-color:rgba(150,200,255,.55);background:rgba(255,255,255,.09)}
+.ai-form button{width:42px;height:42px;flex:none;border-radius:12px;border:none;color:#fff;font-size:1.05rem;cursor:pointer;
+  background:linear-gradient(135deg,#4f9dff,#3a5fd0)}
+.ai-form button:hover{filter:brightness(1.1)}
+.ai-note{padding:0 12px 10px;font-size:.66rem;color:#71809e;text-align:center}
+
+@media (max-width:760px){
+  .ai{right:14px;bottom:84px}
+  .ai-panel{position:fixed;left:12px;right:12px;bottom:78px;width:auto;max-height:70vh}
+}
+
+/* ============ AI 助手核心板块 ============ */
+.ai-hero{display:grid;grid-template-columns:1fr 1.08fr;gap:clamp(24px,4vw,46px);align-items:center}
+.ai-intro h3{font-size:clamp(1.3rem,2.4vw,1.85rem);letter-spacing:.04em;margin-bottom:12px}
+.ai-intro p{color:var(--muted);max-width:46ch}
+.ai-intro p b{color:#bcd8ff}
+.ai-live{display:inline-flex;align-items:center;gap:8px;padding:5px 13px;border-radius:999px;margin-bottom:16px;
+  font-size:.75rem;color:#7cf3c0;background:rgba(124,243,192,.1);border:1px solid rgba(124,243,192,.32)}
+.ai-live i{width:7px;height:7px;border-radius:50%;background:#7cf3c0;animation:aiPulse 2s ease-in-out infinite}
+.ai-feats{list-style:none;margin:22px 0 26px;display:grid;gap:11px}
+.ai-feats li{display:flex;gap:12px;align-items:baseline;font-size:.93rem}
+.ai-feats b{flex:none;min-width:76px;color:#fff;font-weight:700}
+.ai-feats span{color:var(--muted)}
+.ai-cta{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.ai-cta-note{font-size:.78rem;color:var(--muted-2)}
+.ai-stage{position:relative}
+.ai-stage::before{content:"";position:absolute;inset:-10% -8%;z-index:-1;pointer-events:none;
+  background:radial-gradient(circle at 50% 42%,rgba(111,182,255,.2),rgba(111,182,255,0) 68%)}
+.ai-panel--inline{position:relative;right:auto;bottom:auto;width:100%;height:min(600px,74vh);animation:none}
+.ai-fab--float{position:fixed;right:22px;bottom:96px;z-index:70}
+.ai-panel--inline .ai-log{min-height:200px}
+@media (max-width:1080px){
+  .ai-hero{grid-template-columns:1fr}
+  .ai-panel--inline{height:520px}
+}
+@media (max-width:760px){
+  .ai-panel--inline{height:460px}
+  .ai-fab--float{right:14px;bottom:84px}
+}
+
+/* 联网开关 / 搜索来源 / 爱心发送键 */
+.ai-net{display:inline-flex;align-items:center;gap:5px;padding:5px 10px;border-radius:999px;font-size:.72rem;cursor:pointer;
+  color:#8fa6cc;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.14);transition:color .25s,background .25s,border-color .25s}
+.ai-net svg{width:13px;height:13px}
+.ai-net:hover{color:#fff;background:rgba(255,255,255,.12)}
+.ai-net.on{color:#7cf3c0;border-color:rgba(124,243,192,.45);background:rgba(124,243,192,.12)}
+.ai-links{display:flex;flex-wrap:wrap;gap:6px;margin-top:9px}
+.ai-src{display:inline-block;padding:5px 10px;border-radius:8px;font-size:.76rem;text-decoration:none;transition:background .2s,color .2s;
+  color:#bcd8ff;background:rgba(111,182,255,.14);border:1px solid rgba(140,190,255,.3)}
+.ai-src:hover{background:rgba(111,182,255,.32);color:#fff}
+.ai-send svg{width:18px;height:18px;fill:#fff;transition:fill .25s,transform .25s}
+.ai-send:hover svg{fill:#ffb7d1;transform:scale(1.12)}
+
+/* AI 板块：说明文字 + 能力条目使用手写体 */
+.ai-intro p,
+.ai-feats li,
+.ai-feats b,
+.ai-feats span{font-family:var(--font-ai)}
+.ai-intro p{font-size:1.02rem;line-height:1.9}
+.ai-feats li{font-size:.97rem;line-height:1.7}
+.ai-feats b{min-width:84px;font-size:1rem}
+.ai-feats span{font-size:.95rem}
+
+/* 对话气泡：三玖说的话用手写体（更像她亲手写的） */
+.ai-msg.her{font-family:var(--font-ai);font-size:.99rem;line-height:1.85;letter-spacing:.02em}
+.ai-msg.her .ai-src{font-family:var(--font-sans)}
+.ai-msg.typing{font-family:var(--font-ai)}
+
+/* ============ 对话旁的倒计时条 ============ */
+.ai-timers{display:flex;flex-direction:column;gap:6px;padding:0 12px 6px}
+.ai-timers[hidden]{display:none}
+.ai-timer{position:relative;display:grid;grid-template-columns:1fr auto auto;align-items:center;gap:8px;
+  padding:8px 10px 11px;border-radius:10px;background:rgba(111,182,255,.12);border:1px solid rgba(140,190,255,.3)}
+.ai-timer.study{background:rgba(124,243,192,.1);border-color:rgba(124,243,192,.35)}
+.ai-timer-label{font-family:var(--font-ai);font-size:.86rem;color:#dbe9ff;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.ai-timer-time{font-variant-numeric:tabular-nums;font-size:.9rem;font-weight:700;color:#bcd8ff;letter-spacing:.04em}
+.ai-timer.study .ai-timer-time{color:#7cf3c0}
+.ai-timer-stop{width:20px;height:20px;border-radius:6px;border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.06);
+  color:#cfe0ff;font-size:.8rem;line-height:1;cursor:pointer}
+.ai-timer-stop:hover{background:rgba(255,255,255,.18)}
+.ai-timer-bar{position:absolute;left:8px;right:8px;bottom:4px;height:2px;border-radius:2px;background:rgba(255,255,255,.12);overflow:hidden}
+.ai-timer-bar i{display:block;height:100%;width:100%;background:linear-gradient(90deg,#7cc0ff,#8f9bff);transition:width .25s linear}
+.ai-timer.study .ai-timer-bar i{background:linear-gradient(90deg,#7cf3c0,#4fd1a0)}
+
+/* ============ 三玖跟随气泡（跳转板块时出现） ============ */
+.ai-bubble{position:fixed;right:22px;bottom:168px;z-index:71;display:flex;align-items:flex-start;gap:9px;
+  max-width:min(320px,72vw);padding:11px 14px;border-radius:16px;border-bottom-right-radius:5px;cursor:pointer;
+  background:linear-gradient(160deg,rgba(20,28,60,.97),rgba(12,18,40,.97));
+  border:1px solid rgba(150,200,255,.32);
+  box-shadow:0 14px 34px rgba(2,6,24,.6),0 0 22px rgba(111,182,255,.18);
+  font-family:var(--font-ai);font-size:.92rem;line-height:1.7;color:#e4efff;
+  animation:aiBubbleIn .42s cubic-bezier(.2,.8,.2,1)}
+.ai-bubble[hidden]{display:none}
+.ai-bubble::after{content:"";position:absolute;right:26px;bottom:-9px;width:16px;height:16px;transform:rotate(45deg);
+  background:rgba(12,18,40,.97);border-right:1px solid rgba(150,200,255,.32);border-bottom:1px solid rgba(150,200,255,.32)}
+.ai-bubble-ava{width:26px;height:26px;flex:none;display:grid;place-items:center;border-radius:9px;
+  font-family:var(--font-ai);font-size:.95rem;color:#fff;background:linear-gradient(145deg,#7cc0ff,#3359c0)}
+.ai-bubble-text{margin:0;white-space:pre-wrap}
+@keyframes aiBubbleIn{from{opacity:0;transform:translateY(10px) scale(.96)}to{opacity:1;transform:none}}
+@media (max-width:760px){.ai-bubble{right:14px;bottom:152px;max-width:78vw}}
+
+/* ============ 模型接口设置面板 ============ */
+.ai-mode{font-style:normal;font-size:.62rem;font-weight:600;letter-spacing:.06em;padding:2px 7px;border-radius:999px;margin-left:5px;
+  color:#8fa6cc;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);vertical-align:1px}
+.ai-mode.api{color:#7cf3c0;background:rgba(124,243,192,.12);border-color:rgba(124,243,192,.4)}
+.ai-cfgbtn{width:30px;height:26px;border-radius:9px;border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.05);
+  color:#cfe0ff;font-size:.95rem;line-height:1;cursor:pointer}
+.ai-cfgbtn:hover{background:rgba(255,255,255,.14)}
+.ai-cfg{padding:14px;border-bottom:1px solid rgba(255,255,255,.08);background:rgba(8,14,32,.6);max-height:44vh;overflow-y:auto}
+.ai-cfg[hidden]{display:none}
+.ai-cfg-title{margin:0 0 10px;font-size:.86rem;font-weight:700;color:#dfeaff;letter-spacing:.06em}
+.ai-cfg-row{display:block;margin-bottom:9px}
+.ai-cfg-row span{display:block;font-size:.7rem;color:#8fa6cc;margin-bottom:4px;letter-spacing:.08em}
+.ai-cfg-row input,.ai-cfg-row select{width:100%;padding:8px 10px;border-radius:9px;font-size:.8rem;color:#eaf2ff;
+  background:rgba(255,255,255,.06);border:1px solid rgba(150,200,255,.24);outline:none}
+.ai-cfg-row input:focus,.ai-cfg-row select:focus{border-color:rgba(150,200,255,.6);background:rgba(255,255,255,.1)}
+.ai-cfg-row select option{background:#0e1430;color:#eaf2ff}
+.ai-cfg-actions{display:flex;gap:7px;flex-wrap:wrap;margin:12px 0 8px}
+.ai-cfg-actions .btn{padding:7px 13px;font-size:.78rem}
+.ai-cfg-state{margin:6px 0 4px;font-size:.74rem;color:#9fb6dd}
+.ai-cfg-state.ok{color:#7cf3c0}
+.ai-cfg-state.err{color:#ff9db4}
+.ai-cfg-tip{margin:0;font-size:.66rem;line-height:1.6;color:#6f819f}
+.ai-cfg-tip code{font-size:.64rem;color:#a9c9ff;background:rgba(255,255,255,.07);padding:1px 4px;border-radius:4px}
+.ai-msg .ai-src-wrap{margin-top:8px;display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.ai-msg .ai-src-wrap::before{content:"来源";font-size:.66rem;color:#71809e;margin-right:2px}
+
+/* 设置面板：按钮固定在顶部，避免被长表单挤出可视区 */
+.ai-cfg{max-height:52vh;overflow-y:auto;display:flex;flex-direction:column;gap:0}
+.ai-cfg-steps{margin:0 0 8px;font-size:.72rem;line-height:1.6;color:#9fb6dd;letter-spacing:.02em}
+.ai-cfg-actions{position:sticky;top:0;z-index:3;display:flex;gap:7px;flex-wrap:wrap;
+  margin:0 0 10px;padding:8px 0 9px;background:linear-gradient(180deg,rgba(10,16,36,.99),rgba(10,16,36,.92));
+  border-bottom:1px solid rgba(255,255,255,.08)}
+.ai-cfg-actions .btn{padding:8px 14px;font-size:.8rem}
+.ai-cfg-actions #cfgSave{box-shadow:0 6px 16px rgba(60,120,255,.35)}
+
+/* ============ 设置面板：整块铺开（不内部滚动） ============ */
+.ai-cfg{max-height:none;overflow:visible;padding-bottom:16px}
+.ai-panel.ai-panel--cfg{height:auto;max-height:min(760px,90vh);width:min(440px,calc(100vw - 32px))}
+.ai-panel.ai-panel--cfg .ai-log,
+.ai-panel.ai-panel--cfg .ai-quick,
+.ai-panel.ai-panel--cfg .ai-form,
+.ai-panel.ai-panel--cfg .ai-note{display:none}
+.ai-panel.ai-panel--cfg .ai-cfg{padding:16px 16px 20px;background:transparent;border-bottom:none}
+.ai-panel.ai-panel--cfg .ai-cfg-row{margin-bottom:10px}
+.ai-panel.ai-panel--cfg .ai-cfg-row input,
+.ai-panel.ai-panel--cfg .ai-cfg-row select{padding:9px 11px;font-size:.82rem}
+.ai-panel.ai-panel--cfg .ai-cfg-tip{margin-top:2px}
+@media (max-width:760px){
+  .ai-panel.ai-panel--cfg{max-height:88vh;width:auto}
+}
+
+/* PWA 安装按钮 */
+.pwa-install{position:fixed;right:22px;bottom:172px;z-index:69;padding:9px 16px;border-radius:999px;cursor:pointer;
+  font-size:.82rem;color:#fff;border:1px solid rgba(150,200,255,.5);background:linear-gradient(135deg,#4f9dff,#3a5fd0);
+  box-shadow:0 10px 26px rgba(60,120,255,.4);animation:bgmIn .5s ease both}
+.pwa-install[hidden]{display:none}
+.pwa-install:hover{filter:brightness(1.08)}
+@media (max-width:760px){.pwa-install{right:14px;bottom:150px;font-size:.76rem;padding:8px 13px}}
+
+/* ============ 彩蛋：蓝色回信 ============ */
+.ai-achievement{
+  width:30px;height:28px;flex:none;display:grid;place-items:center;padding:0;border-radius:9px;cursor:pointer;
+  color:#ffb7d1;font-size:1.02rem;line-height:1;
+  background:rgba(255,183,209,.1);border:1px solid rgba(255,183,209,.38);
+  box-shadow:0 0 0 rgba(255,183,209,0),0 0 0 rgba(140,190,255,0);
+  animation:achievementGlow 2.4s ease-in-out infinite;
+}
+.ai-achievement[hidden]{display:none}
+.ai-achievement:hover{color:#fff;background:rgba(255,183,209,.2);transform:scale(1.08)}
+@keyframes achievementGlow{
+  0%,100%{box-shadow:0 0 0 rgba(255,183,209,0),0 0 0 rgba(140,190,255,0)}
+  50%{box-shadow:0 0 10px rgba(255,183,209,.7),0 0 22px rgba(140,190,255,.34)}
+}
+
+.confess-layer{
+  position:fixed;inset:0;z-index:120;display:grid;place-items:center;overflow:hidden;padding:24px;
+  background:radial-gradient(circle at 50% 45%,rgba(65,118,255,.22),rgba(3,7,24,.87) 62%,rgba(2,4,16,.96));
+  -webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);
+  animation:confessFade .45s ease both;
+}
+.confess-layer[hidden]{display:none}
+.confess-aurora{
+  position:absolute;inset:-20%;pointer-events:none;opacity:.85;
+  background:
+    radial-gradient(circle at 38% 45%,rgba(255,169,207,.18),transparent 24%),
+    radial-gradient(circle at 64% 38%,rgba(126,190,255,.22),transparent 28%),
+    conic-gradient(from 120deg at 50% 50%,transparent,rgba(140,190,255,.12),transparent 34%);
+  animation:confessAurora 9s ease-in-out infinite alternate;
+}
+.confess-hearts{position:absolute;inset:0;overflow:hidden;pointer-events:none}
+.confess-hearts i{
+  position:absolute;left:var(--x);bottom:-12vh;display:block;color:#ffb7d1;font-style:normal;
+  font-size:var(--size);opacity:0;filter:drop-shadow(0 0 10px rgba(255,183,209,.62));
+  animation:confessHeartFloat var(--dur) linear infinite;animation-delay:var(--delay);
+}
+@keyframes confessFade{from{opacity:0}to{opacity:1}}
+@keyframes confessAurora{from{transform:rotate(-4deg) scale(1)}to{transform:rotate(7deg) scale(1.08)}}
+@keyframes confessHeartFloat{
+  0%{transform:translate3d(0,12vh,0) rotate(0deg) scale(.55);opacity:0}
+  12%{opacity:var(--opacity)}
+  100%{transform:translate3d(var(--drift),-118vh,0) rotate(var(--rot)) scale(1.15);opacity:0}
+}
+.confess-card{
+  position:relative;z-index:2;width:min(420px,92vw);padding:30px 26px 24px;border-radius:24px;text-align:center;
+  color:#e9f2ff;background:linear-gradient(160deg,rgba(26,38,82,.97),rgba(10,16,39,.98));
+  border:1px solid rgba(160,205,255,.38);
+  box-shadow:0 30px 90px rgba(0,0,0,.66),0 0 54px rgba(111,182,255,.28),inset 0 1px rgba(255,255,255,.1);
+  animation:confessCardIn .72s cubic-bezier(.18,.86,.2,1) both;
+}
+.confess-card::before{
+  content:"";position:absolute;inset:9px;border-radius:18px;pointer-events:none;
+  border:1px dashed rgba(166,205,255,.22);
+}
+@keyframes confessCardIn{from{opacity:0;transform:translateY(20px) scale(.92)}to{opacity:1;transform:none}}
+.confess-seal{
+  width:66px;height:66px;margin:0 auto 14px;display:grid;place-items:center;border-radius:50%;
+  font:700 1.42rem/1 var(--font-ai);color:#fff;letter-spacing:.05em;
+  background:radial-gradient(circle at 34% 28%,#83c5ff,#385ed5 72%);
+  border:1px solid rgba(255,255,255,.5);
+  box-shadow:0 0 0 7px rgba(130,190,255,.08),0 0 30px rgba(111,182,255,.55);
+}
+.confess-eyebrow{margin:0 0 6px;font-size:.68rem;letter-spacing:.28em;color:#93aede}
+.confess-card h3{margin:0 0 12px;font-family:var(--font-ai);font-size:clamp(1.55rem,5vw,2.15rem);font-weight:700;letter-spacing:.08em;color:#fff}
+.confess-from{margin:0;font-family:var(--font-ai);font-size:1rem;color:#d9e9ff}
+.confess-date{margin:7px 0 0;font-size:.72rem;letter-spacing:.1em;color:#8098c4}
+.confess-note{margin:18px 0 20px;font-family:var(--font-ai);font-size:.96rem;line-height:1.8;color:#bcd8ff}
+.confess-close{
+  min-width:164px;padding:10px 18px;border-radius:999px;cursor:pointer;color:#fff;font-family:var(--font-ai);font-size:.9rem;
+  background:linear-gradient(135deg,#529fff,#3c5fd0);border:1px solid rgba(180,215,255,.42);
+  box-shadow:0 10px 26px rgba(60,120,255,.34);transition:transform .2s,filter .2s;
+}
+.confess-close:hover{transform:translateY(-2px);filter:brightness(1.08)}
+body.confession-mode .petals i{animation-duration:9s;filter:drop-shadow(0 0 7px rgba(255,183,209,.55))}
+body.confession-mode .ai-panel{box-shadow:0 30px 70px rgba(2,6,24,.7),0 0 48px rgba(255,183,209,.24)}
+@media (max-width:560px){
+  .confess-card{padding:26px 18px 20px;border-radius:20px}
+  .confess-seal{width:56px;height:56px;font-size:1.2rem}
+}
+@media (prefers-reduced-motion:reduce){
+  .confess-layer,.confess-card,.confess-aurora,.confess-hearts i,.ai-achievement{animation:none!important}
+}

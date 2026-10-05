@@ -1,0 +1,125 @@
+/* ============================================================
+   混搭版：官网排版骨架 ＋ 手账纸张质感 ＋ 三玖元素
+   ============================================================ */
+:root{
+  --paper:#f2e9db; --paper-2:#fffdf7; --ink:#332c25; --ink-soft:#7c6f60;
+  --accent:#3f7fc4; --accent-deep:#2f6bb0; --accent-2:#d98aa6;
+  --line:rgba(51,44,37,.22); --line-soft:rgba(51,44,37,.12);
+}
+/* 纸张 + 三玖蓝耳机纹样 + 网点 */
+body{
+  background-color:#f2e9db; color:var(--ink);
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%233f7fc4' stroke-opacity='0.5' stroke-width='1.3' stroke-linecap='round'%3E%3Cpath d='M4 13a8 8 0 0 1 16 0'/%3E%3Crect x='3' y='13' width='5' height='7.5' rx='2.5'/%3E%3Crect x='16' y='13' width='5' height='7.5' rx='2.5'/%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='0.35'/%3E%3C/svg%3E"),
+    radial-gradient(rgba(63,127,196,.10) 1px, transparent 1px),
+    linear-gradient(180deg,#f8f1e6,#ece1cf);
+  background-size:92px 92px, 150px 150px, 26px 26px, 100% 100%;
+  background-repeat:repeat, repeat, repeat, no-repeat;
+}
+#sky,.aurora,.petals{display:none!important;}
+
+/* 三玖元素水印：大耳机（左下） + 手写 39（右上） */
+body::before{content:"";position:fixed;left:-70px;bottom:-50px;width:440px;height:440px;z-index:0;pointer-events:none;
+  opacity:.06;transform:rotate(-14deg);
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%233f7fc4' stroke-opacity='1' stroke-width='1.1' stroke-linecap='round'%3E%3Cpath d='M4 13a8 8 0 0 1 16 0'/%3E%3Crect x='3' y='13' width='5' height='7.5' rx='2.5'/%3E%3Crect x='16' y='13' width='5' height='7.5' rx='2.5'/%3E%3C/svg%3E") center/contain no-repeat;}
+body::after{content:"39";position:fixed;right:1vw;top:9vh;z-index:0;pointer-events:none;
+  font-family:var(--font-hand);font-size:min(26vw,320px);line-height:1;color:rgba(63,127,196,.07);}
+
+/* 章节标题：官网式左对齐 + 英日双语 + 大数字 */
+main{counter-reset:sec;}
+main > .section:not(#home){counter-increment:sec;}
+.sec-overline{display:none!important;}
+.sec-head{position:relative;text-align:left;border-top:1px solid var(--line);padding-top:24px;margin-bottom:44px;}
+.sec-head::before{display:block;margin-bottom:10px;color:var(--accent);font-family:var(--font-sans);
+  font-size:.72rem;letter-spacing:.28em;font-weight:700;}
+.sec-head::after{content:counter(sec,decimal-leading-zero);position:absolute;right:0;top:14px;
+  font-family:var(--font-hand);font-size:clamp(2rem,4.6vw,3.4rem);line-height:1;color:rgba(63,127,196,.18);}
+#profile .sec-head::before{content:"PROFILE ／ プロフィール";}
+#charm   .sec-head::before{content:"CHARM ／ みりょく";}
+#gallery .sec-head::before{content:"GALLERY ／ ギャラリー";}
+#albums  .sec-head::before{content:"ALBUMS ／ アルバム";}
+#quotes  .sec-head::before{content:"SCENE ／ めいしーん";}
+#about   .sec-head::before{content:"ABOUT ／ さくひん";}
+/* 五等分点线 */
+.sec-sub::after{content:"";display:block;width:70px;height:7px;margin-top:12px;opacity:.7;
+  background-image:radial-gradient(circle,var(--accent) 42%,transparent 46%);background-size:14px 7px;background-repeat:repeat-x;}
+
+/* 文字配色 */
+.sec-title,.hero-title .cn{background:none!important;-webkit-background-clip:initial!important;background-clip:initial!important;
+  color:var(--ink)!important;filter:none!important;text-shadow:none!important;}
+.hero-title .cn{letter-spacing:.1em;}
+.sec-sub,.hero-desc,.card p,.mini-list li,.stat dd,.quote p,.quote-note,.f-copy,
+.tip-card .tip-text,.extra-dl dd,.up-hint-link{color:#4a4036!important;}
+.hero-sub{color:#5c5145!important;}
+.hero-sub em{color:var(--accent-2)!important;}
+
+/* 卡片：纸张 + 硬边 + 蓝色和纸胶带 */
+.card{position:relative;background:var(--paper-2)!important;border:1px solid var(--line)!important;border-radius:6px!important;
+  box-shadow:0 2px 0 rgba(51,44,37,.10),0 10px 22px rgba(51,44,37,.08)!important;
+  backdrop-filter:none!important;-webkit-backdrop-filter:none!important;}
+.card:hover{transform:translateY(-2px)!important;border-color:var(--line)!important;}
+.card::before{content:"";position:absolute;top:-9px;left:20px;width:76px;height:18px;pointer-events:none;transform:rotate(-5deg);opacity:.85;
+  background:repeating-linear-gradient(45deg,rgba(63,127,196,.55) 0 7px,rgba(255,255,255,.75) 7px 14px);}
+.charm-card::before{left:auto;right:20px;transform:rotate(4deg);
+  background:repeating-linear-gradient(45deg,rgba(217,138,166,.5) 0 7px,rgba(255,255,255,.75) 7px 14px);}
+.kanji-badge,.t-ico{border-radius:8px!important;box-shadow:0 2px 0 rgba(51,44,37,.16)!important;}
+
+/* 顶栏 / 目录 */
+.topbar{background:rgba(248,241,230,.97)!important;border-bottom:1px solid var(--line)!important;}
+.topbar.scrolled{box-shadow:0 4px 14px rgba(51,44,37,.10)!important;}
+.brand-text b{color:var(--ink)!important;}
+.brand-text small{color:var(--ink-soft)!important;}
+.nav{background:var(--paper-2)!important;border-color:var(--line)!important;}
+.nav-link{color:#4a4036!important;}
+.nav-link:hover{color:var(--ink)!important;background:rgba(51,44,37,.06)!important;}
+.nav-link.active{color:var(--accent)!important;}
+body.nav-open::after{background:rgba(51,44,37,.3)!important;}
+
+/* 按钮 / 标签：官网方角 + 纸色 */
+.btn{border-radius:4px;}
+.btn.primary{background:var(--accent);box-shadow:0 2px 0 rgba(51,44,37,.2)!important;}
+.btn.ghost{color:#4a4036!important;border-color:var(--line)!important;background:#fffdf7!important;}
+.chip{border-radius:3px!important;background:#fff8ec!important;border-color:var(--line)!important;color:#4a4036!important;}
+.trait-chips span{border-radius:3px!important;background:#fff8ec!important;border-color:var(--line)!important;color:#4a4036!important;}
+.watch-link{border-radius:3px!important;background:#eef5fd!important;border-color:rgba(63,127,196,.35)!important;color:#2f5f96!important;box-shadow:none!important;}
+.quote{background:#fffdf8!important;border-color:var(--line)!important;border-radius:4px!important;border-left:3px solid var(--accent)!important;}
+.q-jp{color:#332c25!important;}
+.q-cn{color:#b5647f!important;}
+
+/* 立绘 / 画廊 / 专辑：相纸感 */
+.portrait-card{background:#fffdf7!important;border:1px solid var(--line)!important;border-radius:4px!important;
+  box-shadow:0 8px 20px rgba(51,44,37,.14)!important;}
+.p-ring{display:none!important;}
+.p-frame{border-radius:2px!important;}
+.gal-stage{background:#fff!important;border:1px solid var(--line)!important;border-radius:3px!important;
+  padding:10px 10px 30px!important;box-shadow:0 8px 22px rgba(51,44,37,.14)!important;}
+.rack-caption b,.rack-caption .rack-jp{color:var(--ink)!important;}
+.rack-caption .rack-meta{color:var(--ink-soft)!important;}
+.rack-dot{background:rgba(51,44,37,.25)!important;border-radius:2px!important;}
+.rack-dot.is-active{background:var(--accent)!important;box-shadow:none!important;}
+.footer{background:#e9dfcd!important;border-top:1px solid var(--line)!important;}
+.f-copy{color:var(--ink-soft)!important;}
+.mujiu .mj-cn,.mujiu .mj-en{background:none!important;-webkit-text-fill-color:var(--ink)!important;color:var(--ink)!important;}
+
+/* 音乐控件 / 返回顶部 */
+.bgm{background:rgba(255,253,247,.97)!important;border-color:var(--line)!important;box-shadow:0 4px 14px rgba(51,44,37,.14)!important;}
+.bgm-meta b{color:var(--ink)!important;}
+.bgm-meta small{color:var(--ink-soft)!important;}
+.bgm-btn{background:#fff!important;border-color:var(--line)!important;color:#4a4036!important;}
+.to-top{background:#fffdf7!important;border-color:var(--line)!important;color:var(--ink)!important;}
+
+/* 动效克制 */
+[data-parallax]{transform:none!important;}
+.p-frame img{animation:none!important;transform:none!important;}
+.float-chip{animation:none!important;background:#fff8ec!important;border-color:var(--line)!important;color:var(--ink)!important;}
+.reveal{transition:opacity .5s ease!important;transform:none!important;filter:none!important;}
+.reveal.in{transform:none!important;}
+.sec-head .reveal,.charm-grid .reveal,.quotes .reveal,
+.quotes .reveal:nth-child(odd),.quotes .reveal:nth-child(even),.gal.reveal{transform:none!important;}
+
+@media (max-width:760px){
+  body::before{width:300px;height:300px;opacity:.05;}
+  body::after{font-size:38vw;opacity:.05;}
+  .card::before{width:58px;height:15px;}
+}

@@ -1,0 +1,32 @@
+{
+  "school_id": "cqu-openlib",
+  "school_name": "重庆大学",
+  "source_name": "CQU-openlib 重庆大学资源共享计划",
+  "base_url": "https://cqu-openlib.cn",
+  "official": false,
+  "license": "GPL-3.0",
+  "attribution": "内容来自 CQU-openlib 开源社区，非学校官方资料；回答时应保留来源链接。",
+  "discovery": {
+    "type": "sitemap",
+    "url": "https://cqu-openlib.cn/sitemap.xml",
+    "include_prefixes": ["/academic", "/club", "/skill", "/life", "/contributor", "/sundry", "/course", "/map"],
+    "exclude_prefixes": ["/admin", "/42"]
+  },
+  "content": {
+    "type": "markdown",
+    "templates": ["/doc/{path}.md", "/doc/{path}/index.md"],
+    "course_metadata_only": true,
+    "catalog": {
+      "type": "nav-index",
+      "url": "https://cqu-openlib.cn/nav-index.json",
+      "section": "course"
+    }
+  },
+  "crawl": {
+    "concurrency": 3,
+    "delay_ms": 250,
+    "timeout_seconds": 25,
+    "max_pages": 1200,
+    "user_agent": "MikuAI-KnowledgeBot/1.0 (+local fan project; respects robots.txt)"
+  }
+}

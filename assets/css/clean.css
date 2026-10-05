@@ -1,0 +1,91 @@
+/* ============================================================
+   去 AI 味 · 克制度覆盖层（clean.css）
+   只改视觉基调：配色 / 质感 / 排版 / 动效；不改内容与结构
+   ============================================================ */
+
+/* 1. 移除"AI 配色"三件套：星幕 / 极光 / 飘落花瓣 */
+#sky, .aurora, .petals { display:none !important; }
+
+/* 纯色底 + 细腻噪点（替代满屏光效） */
+body{
+  background-color:#0b0f18;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+  background-attachment:scroll;
+}
+
+/* 2. 去紫、降饱和：只保留三玖的低饱和蓝 */
+:root{
+  --accent:#6f9fd8;
+  --accent-deep:#3f6ea8;
+  --accent-2:#7f9fc4;   /* 原为紫色 */
+  --pink:#cf9db0;
+  --gold:#c8b184;
+  --card:#141a26;
+  --line:rgba(255,255,255,.12);
+  --line-soft:rgba(255,255,255,.08);
+}
+
+/* 3. 全局去玻璃拟态 */
+.card,.quote,.tip-card,.extra-card,.stat-card,.intro-card,.about-card,.gal-stage,.disc-rack,
+.topbar,.bgm,.nav,.footer-sign,.gal-thumb,.watch-link,.trait-chips span{
+  backdrop-filter:none !important; -webkit-backdrop-filter:none !important;
+}
+.card{
+  background:#141a26 !important;
+  border:1px solid rgba(255,255,255,.1) !important;
+  box-shadow:0 1px 0 rgba(0,0,0,.5) !important;
+  border-radius:12px !important;
+}
+.card:hover{transform:none !important;border-color:rgba(255,255,255,.22) !important;box-shadow:0 1px 0 rgba(0,0,0,.5) !important;}
+
+/* 4. 标题：去渐变文字、去光晕 */
+.sec-title,.hero-title .cn{
+  background:none !important;-webkit-background-clip:initial !important;background-clip:initial !important;
+  color:#f3f6fb !important;filter:none !important;text-shadow:none !important;
+}
+.hero-title .cn{letter-spacing:.08em;text-indent:.08em}
+
+/* 5. 去掉各处光晕 / 光环 */
+.kanji-badge,.t-ico,.brand-badge,.f-brand .brand-badge{box-shadow:none !important;}
+.portrait-card{box-shadow:0 1px 0 rgba(0,0,0,.55) !important;background:#141a26 !important;}
+.p-ring{display:none !important;}
+.watch-link:hover,.trait-chips span:hover{box-shadow:none !important;transform:none !important;}
+.rack-dot.is-active{box-shadow:none !important;}
+.gal-thumb.is-active{box-shadow:0 0 0 2px rgba(255,255,255,.35) !important;}
+.rack-floor::after{background:radial-gradient(ellipse at 50% 0%, rgba(111,182,255,.10), rgba(111,182,255,0) 70%) !important;}
+.hero::after{display:none !important;}
+
+/* 6. 英文小标题 -> 章节编号（去掉"模板感"） */
+main{counter-reset:sec}
+main > .section:not(#home){counter-increment:sec}
+.sec-overline{display:none !important;}
+.sec-head::before{
+  content:counter(sec,decimal-leading-zero);display:block;margin-bottom:10px;color:#6f7d92;
+  font-family:var(--font-sans);font-size:.76rem;letter-spacing:.24em;font-weight:600;
+}
+
+/* 7. 动效减半：只保留淡入 + 专辑抽拉 + 画廊切换 */
+[data-parallax]{transform:none !important;}
+.p-frame img{animation:none !important;transform:none !important;}
+.float-chip{animation:none !important;}
+.hero .reveal,.hero .hero-visual,.hero-title .cn{animation:none !important;opacity:1 !important;transform:none !important;filter:none !important;}
+.reveal{transition:opacity .45s ease !important;transform:none !important;filter:none !important;}
+.reveal.in{transform:none !important;filter:none !important;}
+.sec-head .reveal,.charm-grid .reveal,.quotes .reveal,
+.quotes .reveal:nth-child(odd),.quotes .reveal:nth-child(even),
+.gal.reveal{transform:none !important;filter:none !important;}
+.charm-card:hover .kanji-badge{transform:none !important;}
+.nav-link.active::after{animation:none !important;filter:none !important;box-shadow:none !important;}
+.bgm.playing .bgm-badge{animation:none !important;}
+.bgm-eq i{animation:none !important;}
+.scroll-hint .mouse i{animation:none !important;}
+.mujiu:hover{transform:none !important;filter:none !important;letter-spacing:.12em;}
+.mujiu:hover .mj-flower{transform:none !important;text-shadow:none !important;}
+
+/* 8. 顶栏：实色替代毛玻璃 */
+.topbar{background:rgba(11,15,24,.94) !important;border-bottom:1px solid rgba(255,255,255,.08) !important;}
+.topbar.scrolled{background:#0b0f18 !important;box-shadow:none !important;}
+
+/* 9. 圆角收小，边界更像排版而非"卡片堆" */
+.kanji-badge,.t-ico,.brand-badge,.f-brand .brand-badge{border-radius:10px !important;}
+.quote{border-radius:12px !important;}

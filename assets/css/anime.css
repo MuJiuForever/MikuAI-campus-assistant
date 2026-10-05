@@ -1,0 +1,77 @@
+/* ============================================================
+   风格变体 ② 动画官网风（Anime Official）
+   深色 · 硬边 · 细线 · 英日双语标签 · 大数字章节
+   ============================================================ */
+:root{--accent:#4f8fd6;--accent-deep:#2f6bb0;--accent-2:#4f8fd6;--card:#0d1420;
+  --line:rgba(255,255,255,.12);--line-soft:rgba(255,255,255,.06);}
+body{background:#080b12;background-image:linear-gradient(180deg,#0b1220 0%,#080b12 44%,#05070c 100%);}
+#sky,.aurora,.petals{display:none!important}
+
+/* 顶栏 */
+.topbar{background:rgba(8,11,18,.96)!important;border-bottom:1px solid rgba(255,255,255,.14)!important;}
+.topbar.scrolled{box-shadow:none!important;}
+.brand-badge{border-radius:4px!important;box-shadow:none!important;}
+.brand-text small{letter-spacing:.34em;}
+.nav-toggle{border-radius:4px!important;}
+.nav,.nav-link{border-radius:0!important;}
+.nav-link{letter-spacing:.18em;}
+.nav-link.active{color:var(--accent)!important;}
+
+/* 章节标题：左侧细线 + 英日标签 + 右侧大数字 */
+main{counter-reset:sec;}
+main > .section:not(#home){counter-increment:sec;}
+.sec-overline{display:none!important;}
+.sec-head{position:relative;text-align:left;border-top:1px solid rgba(255,255,255,.14);padding-top:26px;margin-bottom:46px;}
+.sec-head::before{display:block;margin-bottom:12px;color:var(--accent);font-family:var(--font-sans);
+  font-size:.72rem;letter-spacing:.3em;font-weight:600;}
+.sec-head::after{content:counter(sec,decimal-leading-zero);position:absolute;right:0;top:18px;
+  font-family:var(--font-serif);font-size:clamp(2.2rem,5vw,3.8rem);line-height:1;color:rgba(255,255,255,.08);}
+#profile .sec-head::before{content:"PROFILE ／ プロフィール";}
+#charm   .sec-head::before{content:"CHARM ／ みりょく";}
+#gallery .sec-head::before{content:"GALLERY ／ ギャラリー";}
+#albums  .sec-head::before{content:"ALBUMS ／ アルバム";}
+#quotes  .sec-head::before{content:"SCENE ／ めいしーん";}
+#about   .sec-head::before{content:"ABOUT ／ さくひん";}
+
+/* 排版 */
+.sec-title{background:none!important;-webkit-background-clip:initial!important;background-clip:initial!important;
+  color:#fff!important;letter-spacing:.14em;filter:none!important;text-shadow:none!important;}
+.sec-sub{color:#93a6bf;}
+.card{background:#0d1420!important;border:1px solid rgba(255,255,255,.1)!important;border-radius:4px!important;
+  box-shadow:none!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important;}
+.card:hover{transform:none!important;border-color:rgba(255,255,255,.26)!important;}
+.kanji-badge,.t-ico{border-radius:4px!important;box-shadow:none!important;background:#16233a!important;}
+.quote{border-radius:4px!important;border-left:2px solid var(--accent);}
+.trait-chips span{border-radius:2px!important;}
+.watch-link{border-radius:2px!important;box-shadow:none!important;}
+
+/* Hero：官网主视觉 */
+.hero{padding-top:150px;}
+.hero::after{display:none!important;}
+.hero-title .cn{background:none!important;-webkit-background-clip:initial!important;color:#fff!important;
+  letter-spacing:.2em;filter:none!important;text-shadow:none!important;}
+.hero-title .jp{letter-spacing:.5em;color:var(--accent);}
+.eyebrow{border-radius:2px;border-color:rgba(255,255,255,.22);background:transparent;color:#b9c9dd;}
+.chip{border-radius:2px;}
+.btn{border-radius:2px;letter-spacing:.1em;}
+.btn.primary{background:var(--accent);box-shadow:none;}
+.portrait-card{border-radius:4px!important;background:#0d1420!important;box-shadow:none!important;
+  border:1px solid rgba(255,255,255,.14);}
+.p-ring{display:none!important;}
+.p-frame{border-radius:2px!important;}
+.float-chip{border-radius:2px;animation:none!important;background:rgba(13,20,32,.92);}
+
+/* 动效克制 */
+[data-parallax]{transform:none!important;}
+.p-frame img{animation:none!important;transform:none!important;}
+.reveal{transition:opacity .5s ease!important;transform:none!important;filter:none!important;}
+.reveal.in{transform:none!important;}
+.sec-head .reveal,.charm-grid .reveal,.quotes .reveal,
+.quotes .reveal:nth-child(odd),.quotes .reveal:nth-child(even),.gal.reveal{transform:none!important;}
+
+/* 画廊 / 专辑 */
+.gal-stage{border-radius:4px!important;border-color:rgba(255,255,255,.14)!important;}
+.rack-dot{border-radius:2px!important;}
+.rack-dot.is-active{box-shadow:none!important;}
+.gal-thumb{border-radius:2px!important;}
+.footer{background:#05070c!important;border-top:1px solid rgba(255,255,255,.1)!important;}
